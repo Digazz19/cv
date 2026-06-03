@@ -19,7 +19,15 @@ HTML(filename='cv_diogo.html').write_pdf('cv.pdf', stylesheets=[css])
 <meta charset="UTF-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9.5pt; color: #222; background: white; }
+  body { 
+    font-family: 'Helvetica Neue', Arial, sans-serif; 
+    font-size: 9.5pt; 
+    color: #222;
+    background: #e8e8e8;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+  }
 
   .page { display: flex; width: 210mm; min-height: 297mm; }
 
