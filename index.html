@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diogo Abreu — Software Engineer</title>
+<meta name="description" content="CV of Diogo Abreu, Software Engineer and M.Sc. in Computer Engineering (University of Minho).">
 <style>
   @page { size: A4; margin: 0; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,7 +28,14 @@
     font-size: 12.5px;
   }
 
+  .headline { font-size: 11.5px; font-weight: 700; color: #5b9bd5; margin-bottom: 3px; }
+  .contact a.pdf { color: #5b9bd5; font-weight: 700; }
+  .muted { font-style: italic; color: #444; font-weight: 400; }
+  .thesis { margin-top: 3px; }
+  .thesis .left { font-size: 10.4px; }
+
   @media print {
+    .contact a.pdf, .sep.pdf { display: none; }
     body { background: #ffffff; padding: 0; }
     .sheet { box-shadow: none; margin: 0; width: auto; min-height: auto; font-size: 10.2px; }
   }
@@ -83,6 +93,19 @@
 
   ul.compact { margin: 1.5px 0 0 16px; }
   ul.compact li { margin-bottom: 1px; text-align: justify; }
+  /* Mobile: drop the fixed A4 sheet */
+  @media screen and (max-width: 820px) {
+    body { padding: 0; background: #fff; }
+    .sheet { width: 100%; min-height: auto; padding: 18px 16px; box-shadow: none; font-size: 14px; }
+    header h1 { font-size: 22px; }
+    .row, .subrow { flex-direction: column; align-items: flex-start; }
+    .row .right, .subrow span:last-child { white-space: normal; }
+    .contact, .row .right, .subrow, .stack { font-size: 12px; }
+    .row .left { font-size: 14px; }
+    .skills-table .cat { width: 95px; }
+    .desc, ul.compact li { text-align: left; }
+  }
+
 </style>
 </head>
 <body>
@@ -90,16 +113,24 @@
 
   <header>
     <h1>Diogo Ribeiro Vassalo de Abreu</h1>
+    <div class="headline">Software Engineer <span class="sep">|</span> M.Sc. in Computer Engineering (thesis submitted, defence pending)</div>
     <div class="contact">
       Esposende, Braga, Portugal
       <span class="sep">|</span> +351 938 328 366
-      <span class="sep">|</span> diogovassaloabreu@gmail.com
+      <span class="sep">|</span> <a href="mailto:diogovassaloabreu@gmail.com">diogovassaloabreu@gmail.com</a>
       <br>
       <a href="https://github.com/Digazz19">github.com/Digazz19</a>
       <span class="sep">|</span>
       <a href="https://linkedin.com/in/diogovabreu">linkedin.com/in/diogovabreu</a>
+      <span class="sep pdf">|</span>
+      <a class="pdf" href="CV_DiogoAbreu.pdf" download>Download CV (PDF)</a>
     </div>
   </header>
+
+  <section>
+    <h2>Summary</h2>
+    <div class="desc">Computer Engineering graduate from the University of Minho, completing an M.Sc. in Advanced Computing &amp; Language Engineering with the thesis submitted and the public defence pending. Strong background in backend systems, language engineering (parsers, language servers, static analysis), concurrency, distributed architectures and high-performance computing. Experienced in Java, Python and systems programming (C/C++) through demanding academic and personal projects. Particularly interested in <b>backend engineering, distributed systems, programming languages and cloud-native systems</b>, with a growing interest in AI applications.</div>
+  </section>
 
   <section>
     <h2>Education</h2>
@@ -110,8 +141,17 @@
       </div>
       <div class="subrow">
         <span>M.Sc. in Computer Engineering — Advanced Computing &amp; Language Engineering</span>
-        <span>Sep 2024 - Oct 2026</span>
+        <span>Sep 2024 - present</span>
       </div>
+      <div class="row thesis">
+        <span class="left">Master's Thesis — VS Code extension for the Alloy 6 specification language <span class="muted">(submitted)</span></span>
+        <span class="right">Java, TypeScript, LSP, DAP, D3.js</span>
+      </div>
+      <ul class="compact">
+        <li>Custom Java language server implementing the Language Server Protocol (LSP) for Alloy 6 specifications.</li>
+        <li>Debugger integration through the Debug Adapter Protocol (DAP) and interactive D3.js visualisation of model instances.</li>
+        <li>Full VS Code extension development, from client integration to packaging.</li>
+      </ul>
     </div>
     <div class="entry">
       <div class="row">
@@ -126,72 +166,55 @@
   </section>
 
   <section>
-    <h2>Projects</h2>
+    <h2>Featured Projects</h2>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left">Payments Ledger &amp; Fraud Rule Engine</span>
+        <span class="right">Java, PostgreSQL, Redis, Docker</span>
+      </div>
+      <ul class="compact">
+        <li>Built a double-entry payments ledger with concurrency-safe transfers.</li>
+        <li>Designed a custom fraud-rule language and wrote its parser and rule-evaluation engine.</li>
+        <li>Benchmarked under contention and achieved a <b>37% performance improvement</b>; covered with automated tests.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left">ROS2 Architecture Static Analysis</span>
+        <span class="right">Python, Lark, RDF/Turtle, SPARQL, SHACL, GraphDB</span>
+      </div>
+      <ul class="compact">
+        <li>Language-engineering pipeline (Lark grammars + Python IR/transformers) that statically extracts ROS2 architectures from XML, YAML and Python launch files into a normalised HAROS Layer 2 model.</li>
+        <li>Structural validation with SHACL, SPARQL-based issue detection and an OWL/GraphDB ontology layer.</li>
+        <li>All 12/12 test launch files processed successfully, extracting 40 nodes and 47 arguments.</li>
+      </ul>
+    </div>
 
     <div class="entry">
       <div class="row">
         <span class="left">PictuRAS — Image Editing Platform</span>
         <span class="right">Python, RabbitMQ, Docker, REST</span>
       </div>
-      <div class="desc">Image-editing application built on a microservice architecture, with independent processing services orchestrated through a message broker, containerised deployment and object storage. Focus on system design, REST APIs and scalability.</div>
+      <ul class="compact">
+        <li>Image-editing application on a microservice architecture, with independent processing services orchestrated through a message broker.</li>
+        <li>Containerised deployment, object storage and REST APIs, with a focus on system design and scalability.</li>
+      </ul>
     </div>
+  </section>
 
-    <div class="entry">
-      <div class="row">
-        <span class="left">Web Application &amp; REST Platform</span>
-        <span class="right">JavaScript, Node.js, SQL</span>
-      </div>
-      <div class="desc">Full-stack web application with a relational database back end, authentication and a REST API serving a dynamic front end, including database modelling and an Express-based data-population pipeline.</div>
-    </div>
-
-    <div class="entry">
-      <div class="row">
-        <span class="left">ROS2 Architecture Static Analysis</span>
-        <span class="right">Python, RDF/Turtle, SPARQL, SHACL</span>
-      </div>
-      <div class="desc">Language-engineering pipeline that statically extracts ROS2 architectures from XML/YAML/Python launch files into a normalised HAROS Layer 2 model, with structural validation, SPARQL-based issue detection and an OWL/GraphDB ontology layer.</div>
-    </div>
-
-    <div class="entry">
-      <div class="row">
-        <span class="left">NLP Pipeline &amp; Knowledge Engineering</span>
-        <span class="right">Python, spaCy, OWL, GraphDB</span>
-      </div>
-      <div class="desc">Natural-language processing spanning tokenisation, language models and named-entity recognition, plus OWL ontology design with SPARQL querying over a triplestore and a Flask query interface.</div>
-    </div>
-
-    <div class="entry">
-      <div class="row">
-        <span class="left">Systems Programming — Data Manager &amp; OS Monitor</span>
-        <span class="right">C, Make, Named Pipes</span>
-      </div>
-      <div class="desc">Performance-oriented C projects: a modular data-management engine with custom data structures and automated tests, and a client/server system monitor built on named pipes for inter-process communication.</div>
-    </div>
-
-    <div class="entry">
-      <div class="row">
-        <span class="left">Fluid Dynamics Simulation</span>
-        <span class="right">C, OpenMP, CUDA</span>
-      </div>
-      <div class="desc">High-performance fluid simulation parallelised with OpenMP (CPU) and CUDA (GPU), focused on performance optimisation and compute-intensive workloads.</div>
-    </div>
-
-    <div class="entry">
-      <div class="row">
-        <span class="left">3D Graphics Engine</span>
-        <span class="right">C++, OpenGL</span>
-      </div>
-      <div class="desc">Modular 3D engine with a separate scene generator and renderer, supporting geometric primitives, hierarchical transformations and camera control across an incremental, multi-phase build.</div>
-    </div>
-
-    <div class="entry">
-      <div class="row">
-        <span class="left">Machine Learning &amp; Neural Networks</span>
-        <span class="right">Python, Neural Networks</span>
-      </div>
-      <div class="desc">Data-science project covering exploratory data visualisation and the design, training and evaluation of neural-network models over real datasets.</div>
-    </div>
-
+  <section>
+    <h2>Additional Academic Projects</h2>
+    <ul class="compact">
+      <li><b>NLP Pipeline</b> <span class="stack">(Python, spaCy, BERT)</span> — tokenisation, word embeddings and NER, including BERT fine-tuning (F1 = 98.75%).</li>
+      <li><b>Knowledge Engineering</b> <span class="stack">(OWL, SPARQL, GraphDB, Flask)</span> — OWL ontology (~107 classes) on a triplestore with a Flask query interface.</li>
+      <li><b>Fluid Dynamics Simulation</b> <span class="stack">(C, OpenMP, CUDA)</span> — HPC simulation parallelised on CPU (OpenMP) and GPU (CUDA).</li>
+      <li><b>Systems Programming</b> <span class="stack">(C, Make, Named Pipes)</span> — data-management engine with custom data structures and a client/server OS monitor.</li>
+      <li><b>3D Graphics Engine</b> <span class="stack">(C++, OpenGL)</span> — scene generator and renderer with hierarchical transformations and camera control.</li>
+      <li><b>Web Application &amp; REST Platform</b> <span class="stack">(JavaScript, Node.js, SQL)</span> — full-stack app with authentication and a REST API.</li>
+      <li><b>Machine Learning &amp; Neural Networks</b> <span class="stack">(Python)</span> — data exploration plus design, training and evaluation of neural networks.</li>
+    </ul>
   </section>
 
   <section>
@@ -201,25 +224,25 @@
         <span class="left">Bugsbyte Hackathon - CeSIUM</span>
         <span class="right">2023</span>
       </div>
-      <div class="desc">48-hour hackathon organised by the Computer Engineering student core, developing a real-world project under tight time constraints in a team setting.</div>
+      <div class="desc">48-hour team hackathon organised by the Computer Engineering student core, building a real-world project under tight time constraints.</div>
     </div>
   </section>
 
   <section>
     <h2>Skills</h2>
     <table class="skills-table">
-      <tr><td class="cat">Languages</td><td>Python, Java, C, C++, JavaScript/TypeScript, Haskell, SQL</td></tr>
-      <tr><td class="cat">Frameworks &amp; Technologies</td><td>Node.js, Vue.js, FastAPI, Express, REST APIs, RabbitMQ, spaCy, SPARQL/RDF, OWL ontologies, OpenMP, CUDA</td></tr>
-      <tr><td class="cat">Databases</td><td>PostgreSQL, MySQL, GraphDB</td></tr>
-      <tr><td class="cat">Tools</td><td>Git, Docker, Linux/WSL, Make</td></tr>
+      <tr><td class="cat">Languages</td><td>Java, Python, C, C++, JavaScript/TypeScript, Haskell, SQL</td></tr>
+      <tr><td class="cat">Frameworks &amp; Technologies</td><td>Node.js, Express, FastAPI, Vue.js, REST APIs, RabbitMQ, LSP/DAP, D3.js, spaCy, RDF/SPARQL/OWL, OpenMP, CUDA</td></tr>
+      <tr><td class="cat">Databases</td><td>PostgreSQL, Redis, MySQL, GraphDB</td></tr>
+      <tr><td class="cat">Tools</td><td>Git, Docker, Kubernetes, Linux, Make</td></tr>
     </table>
   </section>
 
   <section>
-    <h2>Languages &amp; Certifications</h2>
+    <h2>Languages</h2>
     <ul class="compact">
       <li>Portuguese - Native speaker</li>
-      <li>English - B2 (Cambridge School)</li>
+      <li>English - B2 (Professional Working Proficiency)</li>
     </ul>
   </section>
 
