@@ -1,116 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Diogo Abreu — CV</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diogo Abreu — Software Engineer</title>
+<meta name="description" content="CV of Diogo Abreu, Software Engineer and M.Sc. in Computer Engineering (University of Minho).">
 <style>
-  @page { size: A4; margin: 10mm 13mm 9mm 13mm; }
-  * { box-sizing: border-box; }
-  body { font-family: "Latin Modern Roman", "LM Roman 10", serif; font-size: 9pt; line-height: 1.24; color: #111; margin: 0; }
-  header { text-align: center; margin-bottom: 5pt; }
-  h1 { font-size: 20pt; letter-spacing: 0.6pt; margin: 0 0 1pt 0; }
-  .headline { font-size: 10.5pt; font-weight: bold; color: #2f6fb0; margin-bottom: 2pt; }
-  .contact { font-size: 8.6pt; color: #333; }
-  .contact span.sep { color: #999; margin: 0 4pt; }
-  h2 { font-size: 10.5pt; letter-spacing: 1.6pt; text-transform: uppercase; color: #2f6fb0; border-bottom: 1.6pt solid #4a90d9; padding-bottom: 1pt; margin: 5.5pt 0 3pt 0; }
-  .row { display: flex; justify-content: space-between; align-items: baseline; }
-  .title { font-weight: bold; }
-  .meta { font-style: italic; font-size: 8.4pt; color: #333; text-align: right; }
-  .sub { font-style: italic; font-size: 8.8pt; }
-  .entry { margin-bottom: 2.6pt; }
-  p { margin: 0.8pt 0 0 0; text-align: justify; }
-  ul { margin: 1pt 0 0 0; padding-left: 13pt; }
-  li { margin: 0.3pt 0; text-align: justify; }
-  .summary { text-align: justify; margin: 0; }
-  .extra li { margin: 0.6pt 0; }
-  .extra b { font-weight: bold; }
-  .muted { color: #444; font-style: italic; }
-  table.skills { border-collapse: collapse; width: 100%; }
-  table.skills td { vertical-align: top; padding: 0.8pt 0; }
-  table.skills td.k { font-weight: bold; width: 27mm; }
-  .two { display: flex; gap: 10mm; }
-  .two > div { flex: 1; }
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Latin Modern Roman', 'Georgia', 'Times New Roman', serif;
+    color: #111;
+    line-height: 1.4;
+    background: #e9eaec;
+    padding: 28px 16px;
+  }
+
+  /* A4 white sheet centred on the grey page */
+  .sheet {
+    width: 210mm;
+    max-width: 100%;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 14mm 16mm 12mm 16mm;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    font-size: 12.5px;
+  }
+
+  .headline { font-size: 11.5px; font-weight: 700; color: #5b9bd5; margin-bottom: 3px; }
+  .contact a.pdf { color: #5b9bd5; font-weight: 700; }
+  .muted { font-style: italic; color: #444; font-weight: 400; }
+  .thesis { margin-top: 3px; }
+  .thesis .left { font-size: 10.4px; }
+
+  @media print {
+    .contact a.pdf, .sep.pdf { display: none; }
+    body { background: #ffffff; padding: 0; }
+    .sheet { box-shadow: none; margin: 0; width: auto; min-height: auto; font-size: 10.2px; }
+  }
+
+  /* ---------- HEADER ---------- */
+  header { text-align: center; margin-bottom: 6px; }
+  header h1 {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .contact {
+    font-size: 9.6px;
+    color: #222;
+  }
+  .contact a { color: #222; text-decoration: none; }
+  .contact .sep { margin: 0 5px; color: #888; }
+
+  /* ---------- SECTIONS ---------- */
+  section { margin-top: 11px; }
+  h2 {
+    font-size: 13.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #5b9bd5;
+    border-bottom: 3px solid #5b9bd5;
+    padding-bottom: 2px;
+    margin-bottom: 5px;
+  }
+
+  .entry { margin-bottom: 6px; }
+  .entry:last-child { margin-bottom: 0; }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .row .left { font-weight: 700; font-size: 10.6px; }
+  .row .right { font-size: 9.6px; font-style: italic; color: #333; white-space: nowrap; }
+  .subrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 9.8px;
+    font-style: italic;
+    color: #333;
+  }
+  .desc { margin-top: 1.5px; text-align: justify; color: #222; }
+  .stack { font-style: italic; color: #444; font-size: 9.4px; }
+
+  .skills-table td { padding: 1.5px 0; vertical-align: top; }
+  .skills-table .cat { font-weight: 700; width: 130px; }
+
+  ul.compact { margin: 1.5px 0 0 16px; }
+  ul.compact li { margin-bottom: 1px; text-align: justify; }
+  /* Mobile: drop the fixed A4 sheet */
+  @media screen and (max-width: 600px) {
+    body { padding: 0; background: #fff; }
+    .sheet { width: 100%; min-height: auto; padding: 18px 16px; box-shadow: none; font-size: 14px; }
+    header h1 { font-size: 22px; }
+    .row, .subrow { flex-direction: column; align-items: flex-start; }
+    .row .right, .subrow span:last-child { white-space: normal; }
+    .contact, .row .right, .subrow, .stack { font-size: 12px; }
+    .row .left { font-size: 14px; }
+    .skills-table .cat { width: 95px; }
+    .desc, ul.compact li { text-align: left; }
+  }
+
 </style>
 </head>
 <body>
+<div class="sheet">
 
-<header>
-  <h1>Diogo Ribeiro Vassalo de Abreu</h1>
-  <div class="headline">Software Engineer &nbsp;|&nbsp; M.Sc. in Computer Engineering (thesis submitted, defence pending)</div>
-  <div class="contact">
-    Esposende, Braga, Portugal<span class="sep">|</span>+351 938 328 366<span class="sep">|</span>diogovassaloabreu@gmail.com<br>
-    github.com/Digazz19<span class="sep">|</span>linkedin.com/in/diogovabreu<span class="sep">|</span><b>Portfolio:</b> digazz19.github.io/cv
-  </div>
-</header>
+  <header>
+    <h1>Diogo Ribeiro Vassalo de Abreu</h1>
+    <div class="headline">Software Engineer <span class="sep">|</span> M.Sc. in Computer Engineering (thesis submitted, defence pending)</div>
+    <div class="contact">
+      Esposende, Braga, Portugal
+      <span class="sep">|</span> +351 938 328 366
+      <span class="sep">|</span> <a href="mailto:diogovassaloabreu@gmail.com">diogovassaloabreu@gmail.com</a>
+      <br>
+      <a href="https://github.com/Digazz19">github.com/Digazz19</a>
+      <span class="sep">|</span>
+      <a href="https://linkedin.com/in/diogovabreu">linkedin.com/in/diogovabreu</a>
+      <span class="sep pdf">|</span>
+      <a class="pdf" href="CV_DiogoAbreu.pdf" download>Download CV (PDF)</a>
+    </div>
+  </header>
 
-<h2>Summary</h2>
-<p class="summary">Computer Engineering graduate from the University of Minho, completing an M.Sc. in Advanced Computing &amp; Language Engineering with the thesis submitted and the public defence pending. Strong background in backend systems, language engineering (parsers, language servers, static analysis), concurrency, distributed architectures and high-performance computing. Experienced in Java, Python and systems programming (C/C++) through demanding academic and personal projects. Particularly interested in <b>backend engineering, distributed systems, programming languages and cloud-native systems</b>, with a growing interest in AI applications.</p>
+  <section>
+    <h2>Summary</h2>
+    <div class="desc">Computer Engineering graduate from the University of Minho, completing an M.Sc. in Advanced Computing &amp; Language Engineering with the thesis submitted and the public defence pending. Strong background in backend systems, language engineering (parsers, language servers, static analysis), concurrency, distributed architectures and high-performance computing. Experienced in Java, Python and systems programming (C/C++) through demanding academic and personal projects. Particularly interested in <b>backend engineering, distributed systems, programming languages and cloud-native systems</b>, with a growing interest in AI applications.</div>
+  </section>
 
-<h2>Education</h2>
-<div class="entry">
-  <div class="row"><span class="title">University of Minho</span><span class="meta">Braga, Portugal</span></div>
-  <div class="row"><span class="sub">M.Sc. in Computer Engineering — Advanced Computing &amp; Language Engineering</span><span class="meta">Sep 2024 – present</span></div>
-  <div class="row" style="margin-top:2pt"><span><b>Master's Thesis</b> — VS Code extension for the Alloy 6 specification language <span class="muted">(submitted)</span></span><span class="meta">Java, TypeScript, LSP, DAP, D3.js</span></div>
-  <ul>
-    <li>Custom Java language server implementing the Language Server Protocol (LSP) for Alloy 6 specifications.</li>
-    <li>Debugger integration through the Debug Adapter Protocol (DAP) and interactive D3.js visualisation of model instances.</li>
-    <li>Full VS Code extension development, from client integration to packaging.</li>
-  </ul>
+  <section>
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="row">
+        <span class="left">University of Minho</span>
+        <span class="right">Braga, Portugal</span>
+      </div>
+      <div class="subrow">
+        <span>M.Sc. in Computer Engineering — Advanced Computing &amp; Language Engineering</span>
+        <span>Sep 2024 - Present</span>
+      </div>
+      <div class="row thesis">
+        <span class="left">Master's Thesis — VS Code extension for the Alloy 6 specification language <span class="muted">(submitted)</span></span>
+        <span class="right">Java, TypeScript, LSP, DAP, D3.js</span>
+      </div>
+      <ul class="compact">
+        <li>Custom Java language server implementing the Language Server Protocol (LSP) for Alloy 6 specifications.</li>
+        <li>Debugger integration through the Debug Adapter Protocol (DAP) and interactive D3.js visualisation of model instances.</li>
+        <li>Full VS Code extension development, from client integration to packaging.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="row">
+        <span class="left">University of Minho</span>
+        <span class="right">Braga, Portugal</span>
+      </div>
+      <div class="subrow">
+        <span>B.Sc. in Computer Engineering</span>
+        <span>Sep 2021 - Jun 2024</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Featured Projects</h2>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left">Payments Ledger &amp; Fraud Rule Engine</span>
+        <span class="right">Java, PostgreSQL, Redis, Docker</span>
+      </div>
+      <ul class="compact">
+        <li>Built a double-entry payments ledger with concurrency-safe transfers.</li>
+        <li>Designed a custom fraud-rule language and wrote its parser and rule-evaluation engine.</li>
+        <li>Benchmarked under contention and achieved a <b>37% performance improvement</b>; covered with automated tests.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left">ROS2 Architecture Static Analysis</span>
+        <span class="right">Python, Lark, RDF/Turtle, SPARQL, SHACL, GraphDB</span>
+      </div>
+      <ul class="compact">
+        <li>Language-engineering pipeline (Lark grammars + Python IR/transformers) that statically extracts ROS2 architectures from XML, YAML and Python launch files into a normalised HAROS Layer 2 model.</li>
+        <li>Structural validation with SHACL, SPARQL-based issue detection and an OWL/GraphDB ontology layer.</li>
+        <li>All 12/12 test launch files processed successfully, extracting 40 nodes and 47 arguments.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left">PictuRAS — Image Editing Platform</span>
+        <span class="right">Python, RabbitMQ, Docker, REST</span>
+      </div>
+      <ul class="compact">
+        <li>Image-editing application on a microservice architecture, with independent processing services orchestrated through a message broker.</li>
+        <li>Containerised deployment, object storage and REST APIs, with a focus on system design and scalability.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Additional Academic Projects</h2>
+    <ul class="compact">
+      <li><b>NLP Pipeline</b> <span class="stack">(Python, spaCy, BERT)</span> — tokenisation, word embeddings and NER, including BERT fine-tuning (F1 = 98.75%).</li>
+      <li><b>Knowledge Engineering</b> <span class="stack">(OWL, SPARQL, GraphDB, Flask)</span> — OWL ontology (~107 classes) on a triplestore with a Flask query interface.</li>
+      <li><b>Fluid Dynamics Simulation</b> <span class="stack">(C, OpenMP, CUDA)</span> — HPC simulation parallelised on CPU (OpenMP) and GPU (CUDA).</li>
+      <li><b>Systems Programming</b> <span class="stack">(C, Make, Named Pipes)</span> — data-management engine with custom data structures and a client/server OS monitor.</li>
+      <li><b>3D Graphics Engine</b> <span class="stack">(C++, OpenGL)</span> — scene generator and renderer with hierarchical transformations and camera control.</li>
+      <li><b>Web Application &amp; REST Platform</b> <span class="stack">(JavaScript, Node.js, SQL)</span> — full-stack app with authentication and a REST API.</li>
+      <li><b>Machine Learning &amp; Neural Networks</b> <span class="stack">(Python)</span> — data exploration plus design, training and evaluation of neural networks.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Experience &amp; Activities</h2>
+    <div class="entry">
+      <div class="row">
+        <span class="left">Bugsbyte Hackathon - CeSIUM</span>
+        <span class="right">2023</span>
+      </div>
+      <div class="desc">48-hour team hackathon organised by the Computer Engineering student core, building a real-world project under tight time constraints.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <table class="skills-table">
+      <tr><td class="cat">Languages</td><td>Java, Python, C, C++, JavaScript/TypeScript, Haskell, SQL</td></tr>
+      <tr><td class="cat">Frameworks &amp; Technologies</td><td>Node.js, Express, FastAPI, Vue.js, REST APIs, RabbitMQ, LSP/DAP, D3.js, spaCy, RDF/SPARQL/OWL, OpenMP, CUDA</td></tr>
+      <tr><td class="cat">Databases</td><td>PostgreSQL, Redis, MySQL, GraphDB</td></tr>
+      <tr><td class="cat">Tools</td><td>Git, Docker, Kubernetes, Linux, Make</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Languages</h2>
+    <ul class="compact">
+      <li>Portuguese - Native speaker</li>
+      <li>English - B2 (Professional Working Proficiency)</li>
+    </ul>
+  </section>
+
 </div>
-<div class="entry">
-  <div class="row"><span class="title">University of Minho</span><span class="meta">Braga, Portugal</span></div>
-  <div class="row"><span class="sub">B.Sc. in Computer Engineering</span><span class="meta">Sep 2021 – Jun 2024</span></div>
-</div>
-
-<h2>Featured Projects</h2>
-<div class="entry">
-  <div class="row"><span class="title">Payments Ledger &amp; Fraud Rule Engine</span><span class="meta">Java, PostgreSQL, Redis, Docker</span></div>
-  <ul>
-    <li>Built a double-entry payments ledger with concurrency-safe transfers.</li>
-    <li>Designed a custom fraud-rule language and wrote its parser and rule-evaluation engine.</li>
-    <li>Benchmarked under contention and achieved a <b>37% performance improvement</b>; covered with automated tests.</li>
-  </ul>
-</div>
-<div class="entry">
-  <div class="row"><span class="title">ROS2 Architecture Static Analysis</span><span class="meta">Python, Lark, RDF/Turtle, SPARQL, SHACL, GraphDB</span></div>
-  <ul>
-    <li>Language-engineering pipeline (Lark grammars + Python IR/transformers) that statically extracts ROS2 architectures from XML, YAML and Python launch files into a normalised HAROS Layer 2 model.</li>
-    <li>Structural validation with SHACL, SPARQL-based issue detection and an OWL/GraphDB ontology layer.</li>
-    <li>All 12/12 test launch files processed successfully, extracting 40 nodes and 47 arguments.</li>
-  </ul>
-</div>
-<div class="entry">
-  <div class="row"><span class="title">PictuRAS — Image Editing Platform</span><span class="meta">Python, RabbitMQ, Docker, REST</span></div>
-  <ul>
-    <li>Image-editing application on a microservice architecture, with independent processing services orchestrated through a message broker.</li>
-    <li>Containerised deployment, object storage and REST APIs, with a focus on system design and scalability.</li>
-  </ul>
-</div>
-
-<h2>Additional Academic Projects</h2>
-<ul class="extra">
-  <li><b>NLP Pipeline</b> (Python, spaCy, BERT) — tokenisation, word embeddings and NER, including BERT fine-tuning (F1 = 98.75%).</li>
-  <li><b>Knowledge Engineering</b> (OWL, SPARQL, GraphDB, Flask) — OWL ontology (~107 classes) on a triplestore with a Flask query interface.</li>
-  <li><b>Fluid Dynamics Simulation</b> (C, OpenMP, CUDA) — HPC simulation parallelised on CPU (OpenMP) and GPU (CUDA).</li>
-  <li><b>Systems Programming</b> (C, Make, Named Pipes) — data-management engine with custom data structures and a client/server OS monitor.</li>
-  <li><b>3D Graphics Engine</b> (C++, OpenGL) — scene generator and renderer with hierarchical transformations and camera control.</li>
-  <li><b>Web Application &amp; REST Platform</b> (JavaScript, Node.js, SQL) — full-stack app with authentication and a REST API.</li>
-  <li><b>Machine Learning &amp; Neural Networks</b> (Python) — data exploration plus design, training and evaluation of neural networks.</li>
-</ul>
-
-<h2>Experience &amp; Activities</h2>
-<div class="entry">
-  <div class="row"><span><span class="title">Bugsbyte Hackathon — CeSIUM</span> — 48-hour team hackathon building a real-world project under tight time constraints.</span><span class="meta">2023</span></div>
-</div>
-
-<h2>Skills</h2>
-<table class="skills">
-  <tr><td class="k">Languages</td><td>Java, Python, C, C++, JavaScript/TypeScript, Haskell, SQL</td></tr>
-  <tr><td class="k">Frameworks</td><td>Node.js, Express, FastAPI, Vue.js, REST APIs, RabbitMQ, LSP/DAP, D3.js, spaCy, RDF/SPARQL/OWL, OpenMP, CUDA</td></tr>
-  <tr><td class="k">Databases</td><td>PostgreSQL, Redis, MySQL, GraphDB</td></tr>
-  <tr><td class="k">Tools</td><td>Git, Docker, Kubernetes, Linux, Make</td></tr>
-  <tr><td class="k">Spoken</td><td>Portuguese (native) · English (B2 – Professional Working Proficiency)</td></tr>
-</table>
-
 </body>
 </html>
